@@ -1,0 +1,146 @@
+.nav-pills .nav-link.active {
+  background-color: var(--ui-primary);
+}
+
+/* Stepper styles */
+.stepper {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.stepper-wrapper {
+  position: relative;
+}
+
+.stepper-track {
+  position: relative;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.track-base {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 4px;
+  background: #dee2e6;
+  transform: translateY(-50%);
+  border-radius: 2px;
+}
+
+.track-fill {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 4px;
+  background: var(--ui-success);
+  transform: translateY(-50%);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 300ms ease;
+}
+
+.step-item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.step-top {
+  display: block;
+}
+
+.step-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9ecef;
+  color: #6c757d;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.step-circle.completed {
+  background: var(--ui-success);
+  color: white;
+}
+
+.step-circle.active {
+  background: var(--ui-primary);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(13,110,253,0.12);
+}
+
+.step-circle.pending {
+  background: #f8f9fa;
+  color: #6c757d;
+}
+
+
+/* remove per-item line since global track handles connectors */
+
+.step-title {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+/* visually-hidden utility */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Tooltip that appears on hover of the circle */
+.step-tooltip {
+  position: absolute;
+  top: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 0.35rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease, transform 150ms ease;
+  z-index: 10;
+}
+
+.step-item:hover .step-tooltip,
+.step-item .step-circle:focus ~ .step-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* Small arrow under the tooltip */
+.step-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.8) transparent transparent transparent;
+}

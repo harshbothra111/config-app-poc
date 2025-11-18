@@ -1,0 +1,19 @@
+@if (configSignal()) {
+  <div class="container py-4">
+    <h4>{{configSignal()?.name}} journey</h4>
+
+    <app-stepper [steps]="configSignal()?.steps ?? null" [activeIndex]="stepIndex()" (indexChange)="onStepChange($event)"></app-stepper>
+
+    @if (currentStep) {
+      <h5>{{currentStep.title}}</h5>
+      <form (ngSubmit)="next()">
+        <form-renderer [step]="currentStep" [form]="forms[stepIndex()]"></form-renderer>
+
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-secondary" (click)="prev()" [disabled]="stepIndex()===0">Back</button>
+          <button type="button" class="btn btn-primary" (click)="next()">Next</button>
+        </div>
+      </form>
+    }
+  </div>
+}

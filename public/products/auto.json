@@ -1,0 +1,30 @@
+{
+  "id": "auto",
+  "name": "Auto Insurance",
+  "steps": [
+    {
+      "id": "customerInfo",
+      "title": "Customer Info",
+      "fields": [
+        { "id": "firstName", "label": "First name", "type": "text", "validators": { "required": true } },
+        { "id": "lastName", "label": "Last name", "type": "text", "validators": { "required": true } },
+        { "id": "email", "label": "Email", "type": "text", "validators": { "required": true, "pattern": "^\\S+@\\S+\\.\\S+$" } }
+      ]
+    },
+    {
+      "id": "coverage",
+      "title": "Coverage Details",
+      "fields": [
+        { "id": "vehicleYear", "label": "Vehicle Year", "type": "number", "validators": { "required": true, "min": 1980 } },
+        { "id": "vehicleMake", "label": "Make", "type": "text", "validators": { "required": true } },
+        { "id": "vehicleModel", "label": "Model", "type": "text" }
+      ]
+    },
+    { "id": "summary", "title": "Summary", "fields": [] },
+    { "id": "quoting", "title": "Quoting", "fields": [] },
+    { "id": "rating", "title": "Rating", "fields": [] },
+    { "id": "ratingSummary", "title": "Rating Summary", "fields": [] },
+    { "id": "binding", "title": "Binding", "fields": [] },
+    { "id": "issuance", "title": "Issuance", "fields": [] }
+  ]
+}

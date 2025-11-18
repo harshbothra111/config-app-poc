@@ -1,0 +1,14 @@
+@if (field) {
+  <div class="mb-3">
+    <label class="form-label">{{field.label || field.id}}</label>
+    @for (opt of (field.options || []); track opt) {
+      <div class="form-check">
+        <input class="form-check-input" type="radio" [formControl]="form.controls[field.id]" [value]="opt" [id]="field.id+opt" />
+        <label class="form-check-label" [for]="field.id+opt">{{opt}}</label>
+      </div>
+    }
+    @if (form.controls[field.id]?.invalid && form.controls[field.id]?.touched) {
+      <div class="text-danger small">Field is invalid</div>
+    }
+  </div>
+}

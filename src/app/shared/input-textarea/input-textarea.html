@@ -1,0 +1,10 @@
+@if (field) {
+  <div class="mb-3">
+    <label class="form-label">{{field.label || field.id}}</label>
+    <textarea class="form-control" [formControl]="form.controls[field.id]" [readonly]="field.readonly"></textarea>
+
+    @if (form.controls[field.id]?.invalid && form.controls[field.id]?.touched) {
+      <div class="text-danger small">Field is invalid</div>
+    }
+  </div>
+}

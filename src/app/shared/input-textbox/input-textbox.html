@@ -1,0 +1,16 @@
+@if (field) {
+  <div class="mb-3">
+    <label class="form-label">{{field.label || field.id}}</label>
+    <input type="{{field.type}}" class="form-control" [formControl]="form.controls[field.id]" [readonly]="field.readonly" />
+
+    @if (form.controls[field.id]?.invalid && form.controls[field.id]?.touched) {
+      <div class="text-danger small">Field is invalid</div>
+    }
+    @if (form.controls[field.id]?.pending) {
+      <div class="text-muted small">Checking...</div>
+    }
+    @if (form.controls[field.id]?.errors?.asyncInvalid && form.controls[field.id]?.touched) {
+      <div class="text-danger small">{{ form.controls[field.id].errors.asyncInvalid.message }}</div>
+    }
+  </div>
+}

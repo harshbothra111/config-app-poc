@@ -1,0 +1,22 @@
+@if (field) {
+  <div class="mb-3">
+    <label class="form-label">{{field.label || field.id}}</label>
+
+    @if (loading) {
+      <div class="small text-muted">Loading options...</div>
+    }
+
+    <select class="form-select" [formControl]="form.controls[field.id]">
+      @for (opt of (localOptions || field.options || []); track opt) {
+        <option [ngValue]="opt">{{opt}}</option>
+      }
+      @empty {
+        <option disabled>No options</option>
+      }
+    </select>
+
+    @if (form.controls[field.id]?.invalid && form.controls[field.id]?.touched) {
+      <div class="text-danger small">Field is invalid</div>
+    }
+  </div>
+}

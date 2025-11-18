@@ -1,0 +1,30 @@
+{
+  "id": "home",
+  "name": "Home Insurance",
+  "steps": [
+    {
+      "id": "customerInfo",
+      "title": "Customer Info",
+      "fields": [
+        { "id": "firstName", "label": "First name", "type": "text", "validators": { "required": true } },
+        { "id": "lastName", "label": "Last name", "type": "text", "validators": { "required": true } },
+        { "id": "email", "label": "Email", "type": "text", "validators": { "required": true, "pattern": "^\\S+@\\S+\\.\\S+$" } },
+        { "id": "ssn", "label": "SSN", "type": "text", "validators": { "required": true, "pattern": "^\\d{3}-\\d{2}-\\d{4}$" }, "asyncValidators": [ { "name": "uniqueSSN", "resource": "/mock/taken-ssns.json", "message": "SSN already in use" } ] },
+        { "id": "ownerType", "label": "Owner type", "type": "radio", "options": ["Owner", "Tenant"], "default": "Owner" }
+      ]
+    },
+    {
+      "id": "coverage",
+      "title": "Coverage Details",
+      "fields": [
+        { "id": "homeValue", "label": "Home value", "type": "number", "validators": { "required": true, "min": 10000 } },
+        { "id": "state", "label": "State", "type": "select", "optionsResource": "/mock/states.json" },
+        { "id": "city", "label": "City", "type": "select", "dependsOn": "state", "optionsResource": "/mock/cities.json" },
+        { "id": "deductible", "label": "Deductible", "type": "select", "options": [500, 1000, 2000], "default": 1000 }
+      ]
+    },
+    { "id": "summary", "title": "Summary", "fields": [] },
+    { "id": "quoting", "title": "Quoting", "fields": [] },
+    { "id": "rating", "title": "Rating", "fields": [] }
+  ]
+}

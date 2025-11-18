@@ -1,0 +1,26 @@
+@if (steps && steps.length) {
+  <div class="stepper-wrapper">
+    <div class="stepper-track">
+      <div class="track-base"></div>
+      <div class="track-fill" [style.width.%]="fillPercent()"></div>
+
+      <ul class="stepper">
+        @for (s of (steps || []); track s.id) {
+          <li class="step-item" (click)="onSelect($index)">
+            <div class="step-circle" tabindex="0" [class.completed]="$index < activeIndex" [class.active]="$index === activeIndex" [class.pending]="$index > activeIndex">
+              <span class="step-content">
+                @if (s.icon) {
+                  <i class="{{s.icon}}"></i>
+                } @else {
+                  {{$index + 1}}
+                }
+              </span>
+            </div>
+            <div class="step-title sr-only">{{s.title}}</div>
+            <div class="step-tooltip" role="tooltip">{{s.title}}</div>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+}

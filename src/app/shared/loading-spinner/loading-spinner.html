@@ -1,0 +1,9 @@
+@if (loading$ | async) {
+  <div class="loading-overlay" aria-hidden="false">
+    <div class="loading-inner">
+      <div class="spinner-border text-primary" role="status" aria-hidden="true">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+}

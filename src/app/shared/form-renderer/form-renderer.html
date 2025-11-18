@@ -1,0 +1,3 @@
+@for (f of (step.fields || []); track f.id) {
+  <input-field [field]="f" [form]="form"></input-field>
+}

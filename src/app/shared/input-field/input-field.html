@@ -1,0 +1,19 @@
+@if (field) {
+  <div class="mb-3">
+    @if (field.type === 'text' || field.type === 'number') {
+      <input-textbox [field]="field" [form]="form"></input-textbox>
+    }
+
+    @if (field.type === 'textarea') {
+      <input-textarea [field]="field" [form]="form"></input-textarea>
+    }
+
+    @if (field.type === 'select') {
+      <input-select [field]="field" [form]="form"></input-select>
+    }
+
+    @if (field.type === 'radio') {
+      <input-radio [field]="field" [form]="form"></input-radio>
+    }
+  </div>
+}
